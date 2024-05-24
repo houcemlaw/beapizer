@@ -5,12 +5,17 @@ const Schema = mongoose.Schema
 
 const schema = new Schema(
   {
-      taskname: {type: String, required: [true, 'Area Name is required'] },
-      task_id: {type: Number, unique  : true},
-      taskitems: [{
+      customerID: {type: Number, unique  : true},
+      name: {type: String, required: [true, 'Customer Name is required'] },
+      customerType: {
+                      type: String,
+                      enum : ['Business','Individual'],
+                      default: 'Individual'
+                  },
+      accounts: [{
                     type: mongoose.Schema.Types.ObjectId,
-                    ref: 'taskitem'
-                  }]
+                    ref: 'account'
+                 }]
   }, 
   {
     timestamps: true,
@@ -32,8 +37,8 @@ const schema = new Schema(
   }
 )
 
-const ToDoTask = mongoose.model('todotask', schema, 'todotasks');
+const Customer = mongoose.model('customer', schema, 'customers');
 
-module.exports = ToDoTask
+module.exports = Customer
 
 

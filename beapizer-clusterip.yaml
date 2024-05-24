@@ -10,7 +10,7 @@ metadata:
   namespace: beapizer
   name: beapizer-config
 data:
-  API_ROOT_RESOURCE_PATH: /beapizer/api/v1
+  API_ROOT_RESOURCE_PATH: /beapizer/v1.0.0/beapizer-test
   DS_DIALECT: "mongodb"
   DS_URL: "mongodb+srv://<DB_USER>:<DB_PASSWORD>@<DB_CLUSTER>/<DB>?retryWrites=true&w=majority"
   NODE_ENV: producti<DB> "3333"

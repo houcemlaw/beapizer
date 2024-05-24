@@ -5,12 +5,18 @@ const Schema = mongoose.Schema
 
 const schema = new Schema(
   {
-      areaname: {type: String, required: [true, 'Area Name is required'] },
-      area_id: {type: Number, unique  : true},
-      todotasks: [{
+      accountID: {type: Number, unique  : true},
+      accountype: {type: String},
+      status: {
+                      type: String,
+                      enum : ['Active','Suspended', 'Inactive'],
+                      default: 'Inactive'
+                  },
+      balance: {type: Number, default: 0},
+      transactions: [{
                     type: mongoose.Schema.Types.ObjectId,
-                    ref: 'todotask'
-                 }]
+                    ref: 'financialtransaction'
+                  }]
   }, 
   {
     timestamps: true,
@@ -32,8 +38,8 @@ const schema = new Schema(
   }
 )
 
-const ToDoArea = mongoose.model('todoarea', schema, 'todoareas');
+const Account = mongoose.model('account', schema, 'accounts');
 
-module.exports = ToDoArea
+module.exports = Account
 
 

@@ -1,9 +1,9 @@
 
 const EntityAPIMDataRegistrator = require('../beapizer/generic-api/api-config/entity-api-metadata-registrator');
-const ToDoArea = require('./models/to-do-area');
-const ToDoTask = require('./models/to-do-task');
-const TaskItem = require('./models/task-item');
+const Customer = require('./models/customer');
+const Account = require('./models/account');
+const FinancialTransaction = require('./models/financial-transaction');
 
-EntityAPIMDataRegistrator.register(ToDoArea, 'todoareas');
-EntityAPIMDataRegistrator.register(ToDoTask, 'todotasks');
-EntityAPIMDataRegistrator.register(TaskItem, 'taskitems');
+EntityAPIMDataRegistrator.register(Customer, 'customers');
+EntityAPIMDataRegistrator.register(Account, 'accounts');
+EntityAPIMDataRegistrator.register(FinancialTransaction, 'ftransactions');
