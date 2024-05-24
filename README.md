@@ -1,4 +1,6 @@
 # BeAPIzer
+
+
 `BeAPIzer` is a generic back end api for CRUD applications that comes with k8s pre-integration and TLS support.<br>
 Users that are looking for quick api prototyping using a real database, will now be able to quickly create highly customizable, production ready CRUD apis for their front end applications.<br>
 
@@ -6,6 +8,8 @@ Beeing at early development stages, the project comes already with full `mongodb
 Still, we are aiming to hopefully include integrations with all kinds of data sources and streaming technologies in the futures including relational databases, NoSql databases, files, data streaming frameworks to name a few.<br>
 
 Besides, we are working on `OpenApi` and `AsyncApi` support as well in order to be in line with the latest API standards.<br>
+
+For the record, the project was initially created based on a need of a tool that help quickly prototyping production-like APIs to accelerate front end development. It has then evolved into something that we deemed worth sharing with the community.<br>
 
 Please support the project and do not hesiate to contribute. <br>
 
@@ -53,13 +57,12 @@ You may want to look at the example that comes bundled within this project- in t
 
 ## Project Roadmap
 Depending on the priorities, these are the main features that are likely to be implemented in the futures:
-1. remove `request` dependency
-2. Oath2 support
-3. New data sources support (relational databases, NoSql databases, files, data streaming frameworks)
-4. `OpenAPI` and `AsyncAPI` support (latest versions)
-5. Code generation capabilities using `OpenAPI`/`AsyncAPI` definition
-8. Support for deployment on cloud providers (`aws`, `azure` and `gcp`)
-9. Support for other programming languages such as `python`, `Golang` and `java` (But does it really matter!?)
+1. Oath2 support
+2. New data sources support (relational databases, NoSql databases, files, data streaming frameworks)
+3. `OpenAPI` and `AsyncAPI` support (latest versions)
+4. Code generation capabilities using `OpenAPI`/`AsyncAPI` definitions
+5. Support for deployment on cloud providers (`aws`, `azure` and `gcp`)
+6. Support for other programming languages such as `python`, `Golang` and `java` (But does it really matter!?)
 
 
 ## Run the project locally
