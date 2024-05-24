@@ -1,0 +1,31 @@
+{
+  "name": "beapizer",
+  "version": "1.0.0",
+  "description": "A generic Backend API server",
+  "scripts": {
+    "test": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
+    "startdev": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
+    "start": "node -r dotenv/config beapizer-test/beapizer-service.js",
+    "startproduction": "node beapizer-test/beapizer-service.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apicache": "^1.6.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "errorhandler": "^1.5.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "mongodb-uri": "^0.9.7",
+    "mongoose": "^8.4.0",
+    "morgan": "^1.10.0",
+    "node-dev": "^8.0.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
