@@ -10,12 +10,40 @@ metadata:
   namespace: beapizer
   name: beapizer-config
 data:
-  API_ROOT_RESOURCE_PATH: /beapizer/v1.0.0/beapizer-test
+  API_ROOT_RESOURCE_PATH: /myapi/v1.0
   DS_DIALECT: "mongodb"
   DS_URL: "mongodb+srv://<DB_USER>:<DB_PASSWORD>@<DB_CLUSTER>/<DB>?retryWrites=true&w=majority"
   NODE_ENV: producti<DB> "3333"
   MAX_PAGE_SIZE: "200"
   SERVER_TIMEOUT: "20000"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: log-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/home/log/beapizer"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: log-pv-claim
+  namespace: beapizer
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -39,12 +67,12 @@ spec:
     spec:
       containers:
         - name: beapizer
-          image: localhost/beapizer:1.0.0
+          image: localhost/beapizer:0.1.0
           imagePullPolicy: IfNotPresent
           command:
           - /bin/sh
           - -c
-          - 'npm run startproduction | tee /var/log/beapizer.log'
+          - 'npm run beapizer | tee /var/log/beapizer.log'
           envFrom:
           - configMapRef:
               name: beapizer-config
@@ -60,7 +88,8 @@ spec:
               cpu: "500m"
       volumes:
         - name: log-volume
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: log-pv-claim
 ---
 apiVersion: v1
 kind: Service

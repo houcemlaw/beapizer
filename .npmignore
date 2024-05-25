@@ -29,4 +29,7 @@ README.md
 *.yml
 **/.env*
 **/*.sh
+**/*.tgz
+**/*.tar
+**/*.zip
 

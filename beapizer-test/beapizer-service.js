@@ -1,2 +1,2 @@
 require('./register-entities');
-require('../beapizer/beapizer-server');
+require('../beapizer-server');

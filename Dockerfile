@@ -38,4 +38,4 @@ COPY --chown=node:node ./package-lock.json .
 RUN npm install
 COPY --chown=node:node . .
 EXPOSE $PORT
-ENTRYPOINT ["npm", "run", "startproduction"]
+ENTRYPOINT ["npm", "run", "beapizer"]

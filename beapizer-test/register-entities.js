@@ -1,5 +1,5 @@
 
-const EntityAPIMDataRegistrator = require('../beapizer/generic-api/api-config/entity-api-metadata-registrator');
+const EntityAPIMDataRegistrator = require('../generic-api/api-config/entity-api-metadata-registrator');
 const Customer = require('./models/customer');
 const Account = require('./models/account');
 const FinancialTransaction = require('./models/financial-transaction');

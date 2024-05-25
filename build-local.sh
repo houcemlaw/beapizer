@@ -2,7 +2,7 @@
 
 set -e
 
-# version example: 1.0.0
+# version example: 0.1.0
 VERSION=$1
 
 if [ -z "$VERSION" ]

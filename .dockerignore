@@ -3,6 +3,7 @@
 **/.env
 **/.git
 **/.gitignore
+**/.npmignore
 **/.project
 **/.settings
 **/.toolstarget
@@ -24,11 +25,13 @@
 **/values.dev.yaml
 **/*.ini
 **/*.txt
+**/*.sh
 /docs
 /doc
 /cert
-LICENSE
 README.md
+CHANGELOG.md
+CONTRIBUTING.md
 **/*Readme*
 **/*README*
 *.yaml

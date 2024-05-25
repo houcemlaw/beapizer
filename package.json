@@ -4,11 +4,11 @@
   "author": "Houssem LAOUITI <houcem.laouiti@gmail.com>",
   "description": "A generic back end api for CRUD applications",
   "scripts": {
-    "main": "beapizer/beapizer-server.js",
+    "main": "beapizer-server.js",
     "test": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
     "startdev": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
     "start": "node -r dotenv/config beapizer-test/beapizer-service.js",
-    "startproduction": "node beapizer-test/beapizer-service.js"
+    "beapizer": "node beapizer-test/beapizer-service.js"
   },
   "keywords": [
         "api development", 
