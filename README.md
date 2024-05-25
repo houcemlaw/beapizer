@@ -64,6 +64,9 @@ Depending on the priorities, these are the main features that are likely to be i
 5. Support for deployment on cloud providers (`aws`, `azure` and `gcp`)
 6. Support for other programming languages such as `python`, `Golang` and `java` (But does it really matter!?)
 
+## Contributors
+
+Pull requests are always welcome! Please base pull requests against the `main` branch and follow the [contributing guide](https://github.com/houcemlaw/beapizer/blob/main/CONTRIBUTING.md).
 
 ## Run the project locally
 

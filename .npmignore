@@ -1,4 +1,3 @@
-**/.classpath
 **/.dockerignore
 **/.env
 **/.git
@@ -8,9 +7,6 @@
 **/.toolstarget
 **/.vs
 **/.vscode
-**/*.*proj.user
-**/*.dbmdl
-**/*.jfm
 **/*.tar
 **/charts
 **/docker-compose*
@@ -22,15 +18,15 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
-**/*.ini
-**/*.txt
 /docs
 /doc
 /cert
-LICENSE
+/beapizer-test
 README.md
 **/*Readme*
 **/*README*
 *.yaml
 *.yml
 **/.env*
+**/*.sh
+

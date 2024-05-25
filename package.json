@@ -1,16 +1,28 @@
 {
   "name": "beapizer",
-  "version": "1.0.0",
-  "description": "A generic Backend API server",
+  "version": "0.1.0",
+  "author": "Houssem LAOUITI <houcem.laouiti@gmail.com>",
+  "description": "A generic back end api for CRUD applications",
   "scripts": {
+    "main": "beapizer/beapizer-server.js",
     "test": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
     "startdev": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
     "start": "node -r dotenv/config beapizer-test/beapizer-service.js",
     "startproduction": "node beapizer-test/beapizer-service.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+        "api development", 
+        "CRUD api", 
+        "api server"],
+  "repository": { 
+    "type": "git", 
+    "url": "https://github.com/houcemlaw/beapizer.git" 
+  } ,
+  "bugs": {
+    "url": "https://github.com/houcemlaw/beapizer/issues/new"
+  },
+  "homepage": "https://github.com/houcemlaw/beapizer/#readme",
+  "license": "MIT",
   "dependencies": {
     "apicache": "^1.6.3",
     "body-parser": "^1.20.2",
