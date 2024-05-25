@@ -2,7 +2,7 @@
 
 <br>
 
-`BeAPIzer` is a generic back end api for CRUD applications that comes with k8s pre-integration and TLS support.<br>
+`BeAPIzer` is a generic back end api for CRUD applications that comes with MongoDB and k8s integration along with TLS support.<br>
 Users that are looking for quick api prototyping using a real database, will now be able to quickly create highly customizable, production ready CRUD apis for their front end applications.<br>
 
 Beeing at early development stages, the project comes already with full `mongodb` support. <br>
