@@ -155,3 +155,4 @@ desktop.ini
 *.tar
 /local-test
 .npmrc
+/cert
