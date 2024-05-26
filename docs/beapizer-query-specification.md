@@ -34,10 +34,18 @@ GET /uri?filter={entityKey: {operator1: value1, operator2: value2....,operatorN:
 
 examples:
 
-Search with `userName` equal to `Steve`:
+Search with `name` equal to `Steve`:
 ```js 
-GET /uri?filter={"userName":{"$eq":"Steve"}}
+GET /uri?filter={"name":{"$eq":"Steve"}}
+
+OR
+
+GET /uri?filter={"name": "Steve"}
+
+GET /myapi/v1.0/customers?filter={"name": "Steve"}
+
 ```
+
 Search with `createdAt` between `2024-05-01` and `1982-05-03`:
 ```js 
 GET /uri?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "1982-05-03"}}
@@ -47,14 +55,14 @@ Here is the list of operators along with some single field criteria examples:
 
 | **Operator**  | **Description**                   | **Query Example** |
 | :-------: | :-----------------------------|:--------- |
-| **`$eq`**     | **Equal to** (==)                 | `filter={"userName":{"$eq":"Steve"}}` |
-| **`$ne`**     | **Not equal to** (!=)             | `filter={"userName":{"$ne":"Steve"}}` |
+| **`$eq`**     | **Equal to** (==)                 | `filter={"name":{"$eq":"Steve"}}` |
+| **`$ne`**     | **Not equal to** (!=)             | `filter={"name":{"$ne":"Steve"}}` |
 | **`$gt`**     | **Greater Than** (>)              | `filter={"birthdate":{"$gt": "1994-01-01"}` |
 | **`$gte`**    | **Greater Than or Equal To** (>=) | `filter={"birthdate":{"$gte": "1982-07-07"}` |
 | **`$lte`**    | **Less Than** (<)                 | `filter={"balance":{"$lte": "300"}` |
 | **`$lt`**     | **Less Than or Equal To** (<=)    | `filter={"balance":{"$lt": "300"}` |
-| **`$regex`**  | **Like**    (~)                   | `filter={"userName":{"$regex":"Ste"}}` |
-| **`$in`**     | **In** ([])                       | `filter={"userName":{"$in":["Steve","John", "Eric"]}}` |
+| **`$regex`**  | **Like**    (~)                   | `filter={"name":{"$regex":"Ste"}}` |
+| **`$in`**     | **In** ([])                       | `filter={"name":{"$in":["Steve","John", "Eric"]}}` |
 | **`$exists`** | **Exists** (not null)             | `filter={"address": {"$exists":"true"}` |
 
 
@@ -69,21 +77,23 @@ GET /uri?filter={"$and": [{entityKey1: {operator1: value1}},{entityKey2: {operat
 
 examples:
 
-Search with `userName` equal to `Steve` AND `birthDate` >= `1994-01-01`:
+Search with `name` equal to `Steve` AND `createdAt` >= `2024-06-25`:
 ```js 
-GET /uri?filter={"$and": [{"userName":{"$eq":"Steve"}}, {"birthDate":{"$gte":"1994-01-01"}}]}
+GET /uri?filter={"$and": [{"name":{"$eq":"Steve"}}, {"createdAt":{"$gte":"2024-06-25"}}]}
+
+GET /myapi/v1.0/customers?filter={"$and": [{"name":{"$eq":"Steve"}}, {"createdAt":{"$gte":"2024-06-25"}}]}
 ```
 
-Search with `userName` equal to `Steve` OR `birthDate` >= `1994-01-01`:
+Search with `name` equal to `Steve` OR `createdAt` >= `2024-06-25`:
 
 ```js 
-GET /uri?filter={"$or": [{"userName":{"$eq":"Steve"}}, {"birthDate":{"$gte":"1994-01-01"}}]}
+GET /uri?filter={"$or": [{"name":{"$eq":"Steve"}}, {"createdAt":{"$gte":"2024-06-25"}}]}
 ```
 
-Search users having `role`  consult and `userName` equal to `John` OR `Steve`:
+Search users having `createdAt` >= `2024-06-25`  and `name` equal to `John` OR `Steve`:
 
 ```js 
-GET /uri?filter={"$or":[{"role":{"$regex":"consult", "$options": "i"}},{"userName":{"$in": ["Jhon", "Steve"]}}]}
+GET /uri?filter={"$or":[{"createdAt":{"$gte":"2024-06-25"}},{"name":{"$in": ["John", "Steve"]}}]}
 ```
 
 ## Query with Pagination
@@ -133,9 +143,9 @@ GET /uri?sort=createdAt
 ```
 
 
-Get all users in the page 3 that meets the filter criteria and order them by birthdate desc and creation date asc:
+Get all Customers in the page 3 that meets the filter criteria and order them by update date desc and creation date asc:
 ```js 
-GET /uri?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "1982-05-03"}}&page=3&sort=-birthdate,createdAt
+GET /uri?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "1982-05-03"}}&page=3&sort=-updatedAt,createdAt
 ```
 
 
@@ -155,12 +165,14 @@ GET /uri?fields=field1 field2 field3 field3...
 Here are some examples:
 
 ```js 
-GET /uri?fields=username role address
+GET /uri?fields=customerID name customerType
 ```
 
 
 ```js 
-GET /uri?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "1982-05-03"}}&page=3&sort=-birthdate,createdAt&fields=username role
+GET /uri?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "2024-06-03"}}&page=1&sort=-updatedAt&fields=customerID name customerType updatedAt
+
+GET /myapi/v1.0/customers?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "2024-06-03"}}&page=1&sort=-updatedAt&fields=customerID name customerType updatedAt
 ```
 
 ## Query and get composite fields 
@@ -173,13 +185,15 @@ The http query key `compositekeys` comes to meet this requirement by defining th
 
 Here are some examples:
 
-Retrieve the user `Steve` along with all the details available for all his accounts (not only their ids):
+Retrieve the Customer `Steve` along with all the details available for all his accounts (not only their ids):
 ```js 
-GET /uri?filter={"userName":{"$eq":"Steve"}}&compositekeys=accounts
+GET /uri?filter={"name":{"$eq":"Steve"}}&compositekeys=accounts
 ```
 
 
 ```js 
-GET /uri?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "1982-05-03"}}&page=3&sort=-birthdate,createdAt&fields=username role&compositekeys=accounts
+GET /uri?filter={"createdAt": {"$gte": "2024-05-01", "$lt": "2024-05-30"}}&page=1&sort=-updatedAt,-name&fields=name accounts&compositekeys=accounts
 ```
+
+
 

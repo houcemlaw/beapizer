@@ -19,7 +19,7 @@ const getOneToManyEntitiesByCriteria = (parent, membersToPopulate, req, res, nex
       try {
         filters = JSON.parse(filter)
       } catch (error) {
-        return res.status(470).json([])
+        return res.status(470).send({code: error.stack, message: error.message})
       }
       query = parent.find(filters)
       queryCount = parent.countDocuments(filters)          
@@ -69,7 +69,7 @@ const getEntitiesByCriteria = (entity, req, res, next) => {
         //   filters['createdBy']={$eq: req.userId}
         // }
       } catch (error) {
-        return res.status(470).json([])
+        return res.status(470).send({code: error.stack, message: error.message})
       }
       query = entity.find(filters)
       queryCount = entity.countDocuments(filters)          
@@ -99,24 +99,11 @@ const getEntitiesByCriteria = (entity, req, res, next) => {
                 queryCount
                 .exec()
                 .then(count => {
-                              // if (count <= MAX_ALLOWED_PAGE_SIZE){
-                                  // No paging requested , no parameters ==> only return [page size] elements to prevent 
-                                  // huge load and show a notification message field in case the collection size excceeded [max page size] elements
-                                  // if (!page){
-                                  //   return res.status(200).json(returnedEntities)
-                                  // } else {
-                                          
-                                          // I can place the needed information in the http header for example or send it in a json response as below
-                                          res.setHeader('total-pages', Math.ceil(count / pageSize_))
-                                          res.setHeader('current-page', page_)
-                                          res.setHeader('page-size', pageSize_)
-                                          res.status(200).json(returnedEntities)
-                                          return;
-                                        // }
-                              // } 
-                              // else {
-                              //   return res.status(470).json({code: 1, message: 'Number of entities exceeded the allowed number to show : please use pagination instead'})
-                              // }
+                                  res.setHeader('total-pages', Math.ceil(count / pageSize_))
+                                  res.setHeader('current-page', page_)
+                                  res.setHeader('page-size', pageSize_)
+                                  res.status(200).json(returnedEntities)
+                                  return;
                })
               }
               else {

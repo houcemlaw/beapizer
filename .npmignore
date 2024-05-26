@@ -32,4 +32,4 @@ README.md
 **/*.tgz
 **/*.tar
 **/*.zip
-
+.npmrc

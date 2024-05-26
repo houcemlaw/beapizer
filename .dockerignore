@@ -29,6 +29,7 @@
 /docs
 /doc
 /cert
+.npmrc
 README.md
 CHANGELOG.md
 CONTRIBUTING.md
