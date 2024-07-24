@@ -1,6 +1,6 @@
 {
   "name": "@houcemlaw/beapizer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Houssem LAOUITI <houcem.laouiti@gmail.com>",
   "description": "A generic back end api for CRUD applications",
   "scripts": {
