@@ -19,10 +19,10 @@ Please support the project and do not hesiate to contribute. <br>
 `BeAPIzer` allows the creation of CRUD apis using entity definitions. <br>
 The creation workflow is described in the first six steps:
 1. clone `beapizer` project
-2. Customize the project by creating specific business entities and plainge them into a new dedicated folder (for instance, the example that comes with `beapizer` uses a folder named `$workingFolder/beapizer/beapizer-test/` as a placeholder for the customizations) 
-3. register your entities using the `beapizer` singleton `entity-api-metadata-registrator` as done in `$workingFolder/beapizer/beapizer-test/register-entities.js`
-4. bootstrap a `beapizer-server` in a seperate entrypoint file as detailed in `$workingFolder/beapizer/beapizer-test/beapizer-service.js`. This file will be the execution entrypoint of your api server(ex. `node beapizer-test/beapizer-service.js`). 
-> Your api server will need to have all the entities available beforehand so you may want to register them first then import `beapizer-server`. (look at `node beapizer-test/beapizer-service.js` to build some intuitions)
+2. Customize the project by creating specific business entities and plainge them into a new dedicated folder (for instance, the example that comes with `beapizer` uses a folder named `$workingFolder/beapizer/custom-impl/` as a placeholder for the customizations) 
+3. register your entities using the `beapizer` singleton `entity-api-metadata-registrator` as done in `$workingFolder/beapizer/custom-impl/register-entities.js`
+4. bootstrap a `beapizer-server` in a seperate entrypoint file as detailed in `$workingFolder/beapizer/custom-impl/beapizer-service.js`. This file will be the execution entrypoint of your api server(ex. `node custom-impl/beapizer-service.js`). 
+> Your api server will need to have all the entities available beforehand so you may want to register them first then import `beapizer-server`. (look at `node custom-impl/beapizer-service.js` to build some intuitions)
 5. update the existing k8s deployment file with your business specific parameters as described below:
     -   `API_ROOT_RESOURCE_PATH`: the root api URL (ex: `/myapi/v1`).
     -   `MAX_PAGE_SIZE`: maximum number of element retrieved from the data source in a GET query
@@ -49,12 +49,12 @@ Further details about creating Self-Signed and CA-Signed Certificates for your d
 
 In order to create your own entities CRUD API, you may want to create your customization in a seperate folder as depicted in the folder `beaper-test`.<br>
 The customization process is made up of three parts:
-1.  implement your entities as shown in the beapizer example `beapizer-test/models\`
-2.  register your entities using `EntityAPIMDataRegistrator` class that comes bundled within `beapizer` (as shown in `beapizer-test/register-entities.js`)
+1.  implement your entities as shown in the beapizer example `custom-impl/models\`
+2.  register your entities using `EntityAPIMDataRegistrator` class that comes bundled within `beapizer` (as shown in `custom-impl/register-entities.js`)
 3.  create your api service by importing your registered entities along with the beapizer server (as done in `beapizer/beapizer-service.js`). Please keep the exact order of import as the api server will need the entities to be registered beforehand.
 
 
-You may want to look at the example that comes bundled within this project- in the following location `beapizer-test`- to build some intuitions regarding the overall usages and the available capabilities of `BeAPIzer`. <br>
+You may want to look at the example that comes bundled within this project- in the following location `custom-impl`- to build some intuitions regarding the overall usages and the available capabilities of `BeAPIzer`. <br>
 
 ## Project Roadmap
 Depending on the priorities, these are the main features that are likely to be implemented in the futures:

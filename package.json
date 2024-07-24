@@ -5,10 +5,10 @@
   "description": "A generic back end api for CRUD applications",
   "scripts": {
     "main": "beapizer-server.js",
-    "test": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
-    "startdev": "node-dev -r dotenv/config beapizer-test/beapizer-service.js",
-    "start": "node -r dotenv/config beapizer-test/beapizer-service.js",
-    "beapizer": "node beapizer-test/beapizer-service.js"
+    "test": "node-dev -r dotenv/config custom-impl/beapizer-service.js",
+    "startdev": "node-dev -r dotenv/config custom-impl/beapizer-service.js",
+    "start": "node -r dotenv/config custom-impl/beapizer-service.js",
+    "beapizer": "node custom-impl/beapizer-service.js"
   },
   "keywords": [
         "api development", 
